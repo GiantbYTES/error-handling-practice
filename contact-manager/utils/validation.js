@@ -88,9 +88,10 @@ function validPhone(phoneNumStr){
     }
 }
 
+// TODO: check each command individualy (accepts proccess.argv)
 function isValidCommand(commandStr){
     if(commandStr != "add" && commandStr !="list" && commandStr != "search" && commandStr != "delete" && commandStr !="help"){
-        throw new Error(`Error: Unknown command ${invalidcommand}.\n
+        throw new Error(`Error: Unknown command ${commandStr}.\n
             Usage: node app.js [add|list|search|delete|help] [arguments]`)
     }
 

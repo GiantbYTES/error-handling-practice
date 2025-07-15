@@ -3,7 +3,6 @@ const fs = require('fs');
 function writeToFile(filePath, contacts) {
   try {
     fs.writeFileSync(filePath, JSON.stringify(contacts, null, 2), 'utf8');
-    console.log('Data written successfully');
   } catch (err) {
     console.error('Error writing file:', err);
   }
