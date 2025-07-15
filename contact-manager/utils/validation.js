@@ -2,14 +2,24 @@ function validName(nameInput){
     if(typeof nameInput !== "string")
         throw new Error("Error: name must be a string");
     
-    for(let i = 0; i < nameInput.length; i++){
-        const char = nameInput[i];
-        if(!((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || char === ' ')){
-            throw new Error("Error: name can only contain letters and spaces.");
-        }
+    if(!/^[a-zA-Z ]+$/.test(nameInput)){
+        throw new Error("Error: name can only contain letters and spaces.");
     }
 }
 
+function isEmail(strInput){
+    if(typeof strInput !== "string")
+        return false;
+    
+    const atIndex = strInput.indexOf('@');
+    if(atIndex === -1)
+        return false;
+    
+    if(atIndex === 0 || atIndex === strInput.length - 1)
+        return false;
+    
+    return true;
+}
 
 function validEmail(emailInput){
     if(typeof emailInput !== "string")
@@ -88,7 +98,7 @@ function isValidCommand(commandStr){
 
 function isEmailExists(arrOfContacts, emailAdress){
     for(let contact of arrOfContacts){
-        if (contact.email === emailAdress){ // contact.email?
+        if (contact.email === emailAdress){
             return true;
         }
     }
