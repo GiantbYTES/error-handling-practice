@@ -1,6 +1,6 @@
-function handleAdd(command, numOfContacts, contactName) {
+function handleAdd(contactName, numOfContacts) {
 
-      console.log(`Loaded ${numOfContacts}`)
+      console.log(`Loaded ${numOfContacts} contacts`)
       console.log(`Contact added: ${contactName}`);
       console.log(`Contact saved to contacts.json`);
 }
@@ -49,7 +49,7 @@ function handleHelp(){
     showUsage();
 }
 
-
+// TODO: implement handleErrors 
 
 function showUsage() {
   console.log(`
