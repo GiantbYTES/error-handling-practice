@@ -49,7 +49,9 @@ function handleHelp(){
     showUsage();
 }
 
-// TODO: implement handleErrors 
+function handleError(err) {
+  console.log(err.message);
+}
 
 function showUsage() {
   console.log(`
@@ -75,5 +77,6 @@ module.exports = {
     handleList,
     handleSearch,
     handleHelp,
-    showUsage
+  handleError,
+  showUsage,
 };

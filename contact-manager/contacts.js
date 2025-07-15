@@ -9,15 +9,19 @@ function handleChoice(choise) {
   switch (choise) {
     case "add":
       console.log("add");
-      validation.validName(process.argv[3]);
-      validation.validEmail(process.argv[4]);
-      validation.validPhone(process.argv[5]);
-      let name = process.argv[3];
-      let email = process.argv[4];
-      let phone = process.argv[5];
-      contactsDB.addContact(name, email, phone);
-      fileUtils.writeToFile("../contacts.json", contactsDB);
-      ui.handleAdd(name, contactsDB.contactsList.length);
+      try {
+        validation.validName(process.argv[3]);
+        validation.validEmail(process.argv[4]);
+        validation.validPhone(process.argv[5]);
+        let name = process.argv[3];
+        let email = process.argv[4];
+        let phone = process.argv[5];
+        contactsDB.addContact(name, email, phone);
+        fileUtils.writeToFile("../contacts.json", contactsDB);
+        ui.handleAdd(name, contactsDB.contactsList.length);
+      } catch (err) {
+        ui.handleError(err);
+      }
       break;
     case "delete":
       console.log("delete");
