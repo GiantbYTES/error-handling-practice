@@ -1,14 +1,5 @@
 const fs = require('fs');
 
-// const path = require('path');
-// const cs = require('contatctService')
-
-// const filePath = path.join(__dirname, 'contacts.json');
-// const contacts = cs.getContacts();
-// const contacts = [{name: "aaa", phone: "666"}, {name: "bbb", phone: "777"}]
-
-
-
 function writeToFile(filePath, contacts) {
   try {
     fs.writeFileSync(filePath, JSON.stringify(contacts, null, 2), 'utf8');
@@ -35,11 +26,6 @@ function readFromFile(filePath) {
   }
 }
 
-// function addUser(newUser) {
-//   const currentData = readFromFile();
-//   currentData.push(newUser);
-//   writeToFile(currentData);
-// }
-
-// writeToFile()
-// const arrOfContacts = readFromFile();
+module.exports = {
+  writeToFile, readFromFile
+};
