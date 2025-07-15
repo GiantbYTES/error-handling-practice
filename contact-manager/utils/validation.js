@@ -104,3 +104,13 @@ function isEmailExists(arrOfContacts, emailAdress){
     }
     return false;
 }
+
+
+module.exports = {
+    validName,
+    isEmail,
+    validEmail,
+    validPhone,
+    isValidCommand,
+    isEmailExists
+};
