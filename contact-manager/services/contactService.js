@@ -9,7 +9,7 @@ class ContactsDB {
     this.contactsList.push(newContact);
     return 1;
   }
-   deleteContact(email) {
+  deleteContact(email) {
     const index = this.getIndexByEmail(email);
     if (index !== -1) {
       let toDelete = this.contactsList[this.getIndexByEmail(email)];

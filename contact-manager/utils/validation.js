@@ -35,10 +35,10 @@ function validEmail(emailInput) {
   // Check for exactly one @ symbol
   const atIndex = emailInput.indexOf("@");
   if (atIndex === -1)
-    throw new Error("✗ Error: email must contain an @ symbol");
+    throw new Error("✗ Error: Email must contain an @ symbol");
 
   if (atIndex !== emailInput.lastIndexOf("@"))
-    throw new Error("✗ Error: email cannot contain multiple @ symbols");
+    throw new Error("✗ Error: Email cannot contain multiple @ symbols");
 
   // Split into local and domain parts
   const localPart = emailInput.substring(0, atIndex);
@@ -46,30 +46,30 @@ function validEmail(emailInput) {
 
   // Check local part (before @)
   if (localPart.length === 0)
-    throw new Error("✗ Error: email must have content before the @ symbol");
+    throw new Error("✗ Error: Email must have content before the @ symbol");
 
   if (localPart.includes(" "))
-    throw new Error("✗ Error: email local part cannot contain spaces");
+    throw new Error("✗ Error: Email local part cannot contain spaces");
 
   // Check domain part (after @)
   if (domainPart.length === 0)
-    throw new Error("✗ Error: email must have a domain after the @ symbol");
+    throw new Error("✗ Error: Email must have a domain after the @ symbol");
 
   if (domainPart.includes(" "))
-    throw new Error("✗ Error: email domain cannot contain spaces");
+    throw new Error("✗ Error: Email domain cannot contain spaces");
 
   // Check for at least one dot in domain
   const dotIndex = domainPart.indexOf(".");
 
   if (dotIndex === -1)
-    throw new Error("✗ Error: email domain must contain at least one dot");
+    throw new Error("✗ Error: Email domain must contain at least one dot");
 
   // Check that domain has content before and after the dot
   if (dotIndex === 0)
-    throw new Error("✗ Error: email domain must have content before the dot");
+    throw new Error("✗ Error: Email domain must have content before the dot");
 
   if (dotIndex === domainPart.length - 1)
-    throw new Error("✗ Error: email domain must have content after the dot");
+    throw new Error("✗ Error: Email domain must have content after the dot");
 }
 
 function validPhone(phoneNumStr) {
@@ -109,30 +109,42 @@ function isValidCommand(argv) {
     commandStr != "delete" &&
     commandStr != "help"
   ) {
-    throw new Error(`✗ Error: Unknown command ${commandStr}.\nUsage: node app.js [add|list|search|delete|help] [arguments]`);
+    throw new Error(
+      `✗ Error: Unknown command ${commandStr}.\nUsage: node app.js [add|list|search|delete|help] [arguments]`
+    );
   }
 
-  switch (commandStr){
+  switch (commandStr) {
     case "add":
-        if(param1 === undefined || param2 === undefined || param3 === undefined){
-            throw new Error(`✗ Error: Missing arguments for 'add' command.\nUsage: node contact.js add "name" "email" "phone"`);
-        }
-        break;
+      if (
+        param1 === undefined ||
+        param2 === undefined ||
+        param3 === undefined
+      ) {
+        throw new Error(
+          `✗ Error: Missing arguments for 'add' command.\nUsage: node contact.js add "name" "email" "phone"`
+        );
+      }
+      break;
 
     case "delete":
-        if(param1 === undefined){
-            throw new Error(`✗ Error: Missing email argument for 'delete' command.\nUsage: node contact.js delete "email"`);
-        }
-        break;
-        
+      if (param1 === undefined) {
+        throw new Error(
+          `✗ Error: Missing email argument for 'delete' command.\nUsage: node contact.js delete "email"`
+        );
+      }
+      break;
+
     case "search":
-        if(param1 === undefined){
-            throw new Error(`✗ Error: Missing name argument for 'search' command.\nUsage: node contact.js search "name"`);
-        }
-        break;
-        
+      if (param1 === undefined) {
+        throw new Error(
+          `✗ Error: Missing name argument for 'search' command.\nUsage: node contact.js search "name"`
+        );
+      }
+      break;
+
     default:
-        break;
+      break;
   }
 }
 
