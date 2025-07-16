@@ -10,13 +10,16 @@ function handleChoice(choise) {
   switch (choise) {
     case "add":
       console.log("add");
+      let name = process.argv[3];
+      let email = process.argv[4];
+      let phone = process.argv[5];
+
       try {
-        validation.validName(process.argv[3]);
-        validation.validEmail(process.argv[4]);
-        validation.validPhone(process.argv[5]);
-        let name = process.argv[3];
-        let email = process.argv[4];
-        let phone = process.argv[5];
+        validation.validName(name);
+        validation.validEmail(email);
+        validation.validPhone(phone);
+        validation.isEmailExists(contactsDB.getContactList(), email)
+
         contactsDB.addContact(name, email, phone);
         fileUtils.writeToFile("../contacts.json", contactsDB);
         ui.handleAdd(name, contactsDB.getContactList().length);

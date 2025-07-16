@@ -12,7 +12,7 @@ function handleDelete(emailOfUserTodelete, result, numOfContacts) {
   console.log("Loading contacts from contacts.json...");
   console.log(`✓ Loaded ${numOfContacts} contacts`);
 
-  if (result == -1) {
+  if (result === -1) {
     console.log(`Error: No contact found with email: ${emailOfUserTodelete}`);
   } else {
     console.log(`✓ Contact deleted: ${result.getName()}`);
