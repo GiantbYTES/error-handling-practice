@@ -1,3 +1,10 @@
+function isName(nameInput) {
+  if (/^[a-zA-Z ]+$/.test(nameInput)) {
+    return true;
+  }
+  return false;
+}
+
 function validName(nameInput) {
   if (typeof nameInput !== "string")
     throw new Error("✗ Error: name must be a string");
@@ -139,6 +146,7 @@ function isEmailExists(arrOfContacts, emailAdress) {
 }
 
 module.exports = {
+  isName,
   validName,
   isEmail,
   validEmail,
