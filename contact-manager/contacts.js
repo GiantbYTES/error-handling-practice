@@ -18,7 +18,7 @@ function handleChoice(choise) {
         let phone = process.argv[5];
         contactsDB.addContact(name, email, phone);
         fileUtils.writeToFile("../contacts.json", contactsDB);
-        ui.handleAdd(name, contactsDB.contactsList.length);
+        ui.handleAdd(name, contactsDB.getContactList().length);
       } catch (err) {
         ui.handleError(err);
       }
@@ -62,6 +62,9 @@ function handleChoice(choise) {
 
 function run() {
   // validation.isValidCommand(process.argv);
+  // still doesn't work when file doesn't exist
+  contactsDB.contactsList =
+    fileUtils.readFromFile("../contacts.json").contactsList;
   let choice = process.argv[2];
   handleChoice(choice);
 }
