@@ -2,7 +2,7 @@ function handleAdd(contactName, numOfContacts) {
   if (numOfContacts === 1) {
     console.log("✗ File not found - creating new contact list");
   } else {
-    console.log(`✓ Loaded ${numOfContacts} contacts`);
+    console.log(`✓ Loaded ${numOfContacts - 1} contacts`);
   }
   console.log(`✓ Contact added: ${contactName}`);
   console.log(`✓ Contact saved to contacts.json`);
@@ -15,35 +15,31 @@ function handleDelete(emailOfUserTodelete, result, numOfContacts) {
   if (result == -1) {
     console.log(`Error: No contact found with email: ${emailOfUserTodelete}`);
   } else {
-    console.log(`✓ Contact deleted: ${result.name}`);
+    console.log(`✓ Contact deleted: ${result.getName()}`);
   }
 }
 
 function handleList(arrOfContacts) {
   console.log("Loading contacts from contacts.json...");
-  console.log(`✓ Loaded ${arrOfContacts.length} contacts`);
+  console.log(`✓ Loaded ${arrOfContacts.length} contacts\n`);
   console.log("=== All Contacts ===");
 
   for (let i = 0; i < arrOfContacts.length; i++) {
-    console.log(
-      `${i + 1}. ${arrOfContacts[i].name} - ${arrOfContacts[i].mail} - ${
-        arrOfContacts[i].phone
-      }`
-    );
+    console.log(`${i + 1}. ${arrOfContacts[i].strToPrint()}`);
   }
 }
 
 function handleSearch(contactObj, numOfContacts) {
   console.log("Loading contacts from contacts.json...");
   console.log(`✓ Loaded ${numOfContacts} contacts`);
-  console.log(`=== Search Results for ${contactObj.name} ===`);
+  console.log(`=== Search Results for ${contactObj} ===`);
 
   if (typeof contactObj === "Contact") {
     console.log(
       `1. ${arrOfContacts[i].name} - ${arrOfContacts[i].mail} - ${arrOfContacts[i].phone}`
     );
   } else {
-    console.log(`No contacts found matching ${contactObj.name}`);
+    console.log(`No contacts found matching ${contactObj}`);
   }
 }
 
