@@ -10,14 +10,13 @@ class ContactsDB {
     return 1;
   }
   deleteContact(email) {
-    let toDelete;
     const index = this.getIndexByEmail(email);
     if (index !== -1) {
-      toDelete = this.contactsList[this.getIndexByEmail(email)];
+      let toDelete = this.contactsList[this.getIndexByEmail(email)];
       this.contactsList.splice(this.getIndexByEmail(email), 1);
+      return toDelete;
     }
-    toDelete = -1;
-    return toDelete;
+    return -1;
   }
   getContactList() {
     return this.contactsList;
