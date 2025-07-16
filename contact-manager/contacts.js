@@ -1,4 +1,5 @@
 const ContactsDB = require("./services/contactService");
+const Contact = require("./services/contact");
 const validation = require("./utils/validation");
 const fileUtils = require("./utils/fileUtils");
 const ui = require("./commands/commandHandler");
@@ -32,22 +33,19 @@ function handleChoice(choise) {
       break;
     case "list":
       console.log("list");
-      ui.handleDelete(contactsDB.getContactList());
+      ui.handleList(contactsDB.getContactList());
       break;
     case "search":
       console.log("search");
       let toReturn;
-      let type;
       if (validation.isEmail(process.argv[3])) {
         validation.validEmail(process.argv[3]);
-        type = "Email";
-        toReturn = contactsDB.getContactByEmail;
+        toReturn = contactsDB.getContactByEmail(process.argv[3]);
       } else if (validation.isName(process.argv[3])) {
         validation.validName(process.argv[3]);
-        type = "Name";
-        toReturn = contactsDB.getContactByName;
+        toReturn = contactsDB.getContactByName(process.argv[3]);
       }
-      ui.handleSearch(type, toReturn, contactsDB.contactsList.length);
+      ui.handleSearch(toReturn, contactsDB.contactsList.length);
       break;
     case "help":
       console.log("help");
@@ -60,11 +58,19 @@ function handleChoice(choise) {
   }
 }
 
+function updateList() {
+  const file = fileUtils.readFromFile("../contacts.json").contactsList;
+  file.forEach((c) => {
+    const contact = new Contact(c.name, c.email, c.phone);
+    contactsDB.contactsList.push(contact);
+  });
+}
+
 function run() {
   // validation.isValidCommand(process.argv);
-  // still doesn't work when file doesn't exist
-  contactsDB.contactsList =
-    fileUtils.readFromFile("../contacts.json").contactsList;
+  if (fileUtils.isFileExist("../contacts.json")) {
+    updateList();
+  }
   let choice = process.argv[2];
   handleChoice(choice);
 }

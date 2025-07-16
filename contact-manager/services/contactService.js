@@ -30,6 +30,7 @@ class ContactsDB {
         return i;
       }
     }
+    return -1;
   }
   getIndexByEmail(email) {
     for (let i = 0; i < this.contactsList.length; i++) {
@@ -38,13 +39,22 @@ class ContactsDB {
         return i;
       }
     }
+    return -1;
   }
 
   getContactByName(name) {
-    return this.contactsList[this.getIndexByName(name)];
+    const index = this.getIndexByName(name);
+    if (index !== -1) {
+      return this.contactsList[this.getIndexByName(name)];
+    }
+    return -1;
   }
   getContactByEmail(email) {
-    return this.contactsList[this.getIndexByEmail(email)];
+    const index = this.getIndexByName(email);
+    if (index !== -1) {
+      return this.contactsList[this.getIndexByEmail(email)];
+    }
+    return -1;
   }
 }
 
