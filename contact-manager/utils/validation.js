@@ -139,10 +139,9 @@ function isValidCommand(argv) {
 function isEmailExists(arrOfContacts, emailAdress) {
   for (let contact of arrOfContacts) {
     if (contact.email === emailAdress) {
-      return true;
+      throw new Error("✗ Error: Contact with this email already exists");
     }
   }
-  return false;
 }
 
 module.exports = {
