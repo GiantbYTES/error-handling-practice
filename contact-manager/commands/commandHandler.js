@@ -13,9 +13,10 @@ function handleDelete(emailOfUserTodelete, result, numOfContacts) {
   console.log(`✓ Loaded ${numOfContacts} contacts`);
 
   if (result === -1) {
-    console.log(`Error: No contact found with email: ${emailOfUserTodelete}`);
+    console.log(`✗ Error: No contact found with email: ${emailOfUserTodelete}`);
   } else {
     console.log(`✓ Contact deleted: ${result.getName()}`);
+    console.log("✓ Contacts saved to contacts.json");
   }
 }
 
@@ -31,7 +32,7 @@ function handleList(arrOfContacts) {
 
 function handleSearch(searchInput, contactObj, numOfContacts) {
   console.log("Loading contacts from contacts.json...");
-  console.log(`✓ Loaded ${numOfContacts} contacts`);
+  console.log(`✓ Loaded ${numOfContacts} contacts\n`);
   console.log(`=== Search Results for "${searchInput}" ===`);
 
   if (contactObj !== -1) {
@@ -54,16 +55,16 @@ function showUsage() {
     Usage: node contacts.js [command] [arguments]
 
     Commands:
-    add "name" "email" "phone"  - Add a new contact
-    list                        - List all contacts
-    search "query"              - Search contacts by name or email
-    delete "email"              - Delete contact by email
-    help                        - Show this help message
+      add "name" "email" "phone"  - Add a new contact
+      list                        - List all contacts
+      search "query"              - Search contacts by name or email
+      delete "email"              - Delete contact by email
+      help                        - Show this help message
 
     Examples:
-    node contacts.js add "John Doe" "john@example.com" "555-123-4567"
-    node contacts.js search "john"
-    node contacts.js delete "john@example.com"
+      node contacts.js add "John Doe" "john@example.com" "555-123-4567"
+      node contacts.js search "john"
+      node contacts.js delete "john@example.com"
     `);
 }
 

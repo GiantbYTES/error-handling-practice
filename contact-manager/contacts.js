@@ -9,7 +9,6 @@ const contactsDB = new ContactsDB();
 function handleChoice(choise) {
   switch (choise) {
     case "add":
-      console.log("add");
       let name = process.argv[3];
       let email = process.argv[4];
       let phone = process.argv[5];
@@ -18,7 +17,8 @@ function handleChoice(choise) {
         validation.validName(name);
         validation.validEmail(email);
         validation.validPhone(phone);
-        validation.isEmailExists(contactsDB.getContactList(), email)
+        console.log(`✓ Loaded ${contactsDB.getContactList().length} contacts`);
+        validation.isEmailExists(contactsDB.getContactList(), email);
 
         contactsDB.addContact(name, email, phone);
         fileUtils.writeToFile("../contacts.json", contactsDB);
@@ -29,7 +29,6 @@ function handleChoice(choise) {
       break;
 
     case "delete":
-      console.log("delete");
       try {
         validation.validEmail(process.argv[3]);
         const result = contactsDB.deleteContact(process.argv[3]);
@@ -45,7 +44,6 @@ function handleChoice(choise) {
       break;
 
     case "list":
-      console.log("list");
       try {
         ui.handleList(contactsDB.getContactList());
       } catch (err) {
@@ -54,7 +52,6 @@ function handleChoice(choise) {
       break;
 
     case "search":
-      console.log("search");
       try {
         let toReturn;
         const input = process.argv[3];
@@ -72,7 +69,6 @@ function handleChoice(choise) {
       break;
 
     case "help":
-      console.log("help");
       ui.handleHelp();
       break;
 

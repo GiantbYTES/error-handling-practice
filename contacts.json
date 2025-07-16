@@ -1,0 +1,9 @@
+{
+  "contactsList": [
+    {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "555-123-4567"
+    }
+  ]
+}
