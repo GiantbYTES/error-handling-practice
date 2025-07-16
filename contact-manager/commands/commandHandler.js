@@ -29,17 +29,15 @@ function handleList(arrOfContacts) {
   }
 }
 
-function handleSearch(contactObj, numOfContacts) {
+function handleSearch(searchInput, contactObj, numOfContacts) {
   console.log("Loading contacts from contacts.json...");
   console.log(`✓ Loaded ${numOfContacts} contacts`);
-  console.log(`=== Search Results for ${contactObj} ===`);
+  console.log(`=== Search Results for "${searchInput}" ===`);
 
-  if (typeof contactObj === "Contact") {
-    console.log(
-      `1. ${arrOfContacts[i].name} - ${arrOfContacts[i].mail} - ${arrOfContacts[i].phone}`
-    );
+  if (contactObj !== -1) {
+    console.log(`1. ${contactObj.strToPrint()}`);
   } else {
-    console.log(`No contacts found matching ${contactObj}`);
+    console.log(`No contacts found matching "${searchInput}"`);
   }
 }
 
