@@ -24,37 +24,57 @@ function handleChoice(choise) {
         ui.handleError(err);
       }
       break;
+
     case "delete":
       console.log("delete");
-      validation.validEmail(process.argv[3]);
-      const result = contactsDB.deleteContact(process.argv[3]);
-      fileUtils.writeToFile("../contacts.json", contactsDB);
-      ui.handleDelete(process.argv[3], result, contactsDB.contactsList.length);
+      try {
+        validation.validEmail(process.argv[3]);
+        const result = contactsDB.deleteContact(process.argv[3]);
+        fileUtils.writeToFile("../contacts.json", contactsDB);
+        ui.handleDelete(
+          process.argv[3],
+          result,
+          contactsDB.contactsList.length
+        );
+      } catch (err) {
+        ui.handleError(err);
+      }
       break;
+
     case "list":
       console.log("list");
-      ui.handleList(contactsDB.getContactList());
+      try {
+        ui.handleList(contactsDB.getContactList());
+      } catch (err) {
+        ui.handleError(err);
+      }
       break;
+
     case "search":
       console.log("search");
-      let toReturn;
-      if (validation.isEmail(process.argv[3])) {
-        validation.validEmail(process.argv[3]);
-        toReturn = contactsDB.getContactByEmail(process.argv[3]);
-      } else if (validation.isName(process.argv[3])) {
-        validation.validName(process.argv[3]);
-        toReturn = contactsDB.getContactByName(process.argv[3]);
+     try {
+        let toReturn;
+        if (validation.isEmail(process.argv[3])) {
+          validation.validEmail(process.argv[3]);
+          toReturn = contactsDB.getContactByEmail(process.argv[3]);
+        } else if (validation.isName(process.argv[3])) {
+          validation.validName(process.argv[3]);
+          toReturn = contactsDB.getContactByName(process.argv[3]);
+        }
+        ui.handleSearch(toReturn, contactsDB.contactsList.length);
+      } catch (err) {
+        ui.handleError(err);
       }
-      ui.handleSearch(toReturn, contactsDB.contactsList.length);
       break;
+
     case "help":
       console.log("help");
       ui.handleHelp();
       break;
+
     default:
-      throw new Error(
-        "✗ Error: Unknown command 'invalidcommand'\n Usage: node contacts.js [add|list|search|delete|help] [arguments]"
-      );
+      console.log("ERROR!");
+      break;
   }
 }
 
@@ -67,11 +87,18 @@ function updateList() {
 }
 
 function run() {
-  // validation.isValidCommand(process.argv);
+try {
+    validation.isValidCommand(process.argv);
+  } catch (err) {
+    ui.handleError(err);
+    return;
+  }
+
   if (fileUtils.isFileExist("../contacts.json")) {
     updateList();
   }
   let choice = process.argv[2];
   handleChoice(choice);
 }
+
 run();

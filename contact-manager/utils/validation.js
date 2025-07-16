@@ -96,8 +96,12 @@ function validPhone(phoneNumStr) {
   }
 }
 
-// TODO: check each command individualy (accepts proccess.argv)
-function isValidCommand(commandStr) {
+function isValidCommand(argv) {
+  let commandStr = argv[2];
+  let param1 = argv[3];
+  let param2 = argv[4];
+  let param3 = argv[5];
+
   if (
     commandStr != "add" &&
     commandStr != "list" &&
@@ -105,8 +109,30 @@ function isValidCommand(commandStr) {
     commandStr != "delete" &&
     commandStr != "help"
   ) {
-    throw new Error(`✗ Error: Unknown command ${commandStr}.\n
-            Usage: node app.js [add|list|search|delete|help] [arguments]`);
+    throw new Error(`✗ Error: Unknown command ${commandStr}.\nUsage: node app.js [add|list|search|delete|help] [arguments]`);
+  }
+
+  switch (commandStr){
+    case "add":
+        if(param1 === undefined || param2 === undefined || param3 === undefined){
+            throw new Error(`✗ Error: Missing arguments for 'add' command.\nUsage: node contact.js add "name" "email" "phone"`);
+        }
+        break;
+
+    case "delete":
+        if(param1 === undefined){
+            throw new Error(`✗ Error: Missing email argument for 'delete' command.\nUsage: node contact.js delete "email"`);
+        }
+        break;
+        
+    case "search":
+        if(param1 === undefined){
+            throw new Error(`✗ Error: Missing name argument for 'search' command.\nUsage: node contact.js search "name"`);
+        }
+        break;
+        
+    default:
+        break;
   }
 }
 
