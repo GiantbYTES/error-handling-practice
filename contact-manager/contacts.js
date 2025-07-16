@@ -52,16 +52,17 @@ function handleChoice(choise) {
 
     case "search":
       console.log("search");
-     try {
+      try {
         let toReturn;
-        if (validation.isEmail(process.argv[3])) {
-          validation.validEmail(process.argv[3]);
-          toReturn = contactsDB.getContactByEmail(process.argv[3]);
-        } else if (validation.isName(process.argv[3])) {
-          validation.validName(process.argv[3]);
-          toReturn = contactsDB.getContactByName(process.argv[3]);
+        const input = process.argv[3];
+        if (validation.isEmail(input)) {
+          validation.validEmail(input);
+          toReturn = contactsDB.getContactByEmail(input);
+        } else if (validation.isName(input)) {
+          validation.validName(input);
+          toReturn = contactsDB.getContactByName(input);
         }
-        ui.handleSearch(toReturn, contactsDB.contactsList.length);
+        ui.handleSearch(input, toReturn, contactsDB.contactsList.length);
       } catch (err) {
         ui.handleError(err);
       }
@@ -87,7 +88,7 @@ function updateList() {
 }
 
 function run() {
-try {
+  try {
     validation.isValidCommand(process.argv);
   } catch (err) {
     ui.handleError(err);

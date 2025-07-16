@@ -25,8 +25,10 @@ class ContactsDB {
 
   getIndexByName(name) {
     for (let i = 0; i < this.contactsList.length; i++) {
-      const contact = this.contactsList[i];
-      if (contact.getName() === name) {
+      const contactName = this.contactsList[i].getName().toLowerCase();
+      console.log(contactName);
+      if (contactName.search(name) !== -1) {
+        // console.log(contact.getName());
         return i;
       }
     }
@@ -45,14 +47,14 @@ class ContactsDB {
   getContactByName(name) {
     const index = this.getIndexByName(name);
     if (index !== -1) {
-      return this.contactsList[this.getIndexByName(name)];
+      return this.contactsList[index];
     }
     return -1;
   }
   getContactByEmail(email) {
     const index = this.getIndexByName(email);
     if (index !== -1) {
-      return this.contactsList[this.getIndexByEmail(email)];
+      return this.contactsList[index];
     }
     return -1;
   }
