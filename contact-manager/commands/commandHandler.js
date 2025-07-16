@@ -32,7 +32,7 @@ function handleList(arrOfContacts) {
 function handleSearch(searchInput, contactObj, numOfContacts) {
   console.log("Loading contacts from contacts.json...");
   console.log(`✓ Loaded ${numOfContacts} contacts`);
-  console.log(`=== Search Results for ${contactObj} ===`);
+  console.log(`=== Search Results for "${searchInput}" ===`);
 
   if (contactObj !== -1) {
     console.log(`1. ${contactObj.strToPrint()}`);

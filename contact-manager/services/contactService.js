@@ -25,10 +25,12 @@ class ContactsDB {
 
   getIndexByName(name) {
     for (let i = 0; i < this.contactsList.length; i++) {
-      const contactName = this.contactsList[i].getName().toLowerCase();
-      console.log(contactName);
-      if (contactName.search(name) !== -1) {
-        // console.log(contact.getName());
+      const contactNameLower = this.contactsList[i].getName().toLowerCase();
+      const contactNameUpper = this.contactsList[i].getName();
+      if (
+        contactNameLower.search(name) !== -1 ||
+        contactNameUpper.search(name) !== -1
+      ) {
         return i;
       }
     }
