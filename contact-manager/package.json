@@ -6,6 +6,7 @@
   "scripts": {
   "test": "jest",
   "test-validation": "jest ./tests/validation.test.js"
+  "test-contactservice": "jest ./tests/contactService.test.js" 
   },
   "keywords": [],
   "author": "",
