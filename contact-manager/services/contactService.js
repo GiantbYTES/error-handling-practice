@@ -53,7 +53,7 @@ class ContactsDB {
     return -1;
   }
   getContactByEmail(email) {
-    const index = this.getIndexByName(email);
+    const index = this.getIndexByEmail(email);
     if (index !== -1) {
       return this.contactsList[index];
     }
