@@ -4,7 +4,8 @@
   "description": "",
   "main": "contacts.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-contactservice": "jest ./tests/contactService.test.js"
   },
   "keywords": [],
   "author": "",

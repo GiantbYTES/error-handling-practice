@@ -82,3 +82,8 @@ test("getContactByEmail should return the contact object by email", () => {
     phone: "123-456-7890",
   });
 });
+
+test("getContactByEmail should return -1 if contact not found", () => {
+  const contact = contactsDB.getContactByEmail("abc@exmaple.com");
+  expect(contact).toBe(-1);
+});
