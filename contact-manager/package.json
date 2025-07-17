@@ -5,8 +5,9 @@
   "main": "contacts.js",
   "scripts": {
   "test": "jest",
-  "test-validation": "jest ./tests/validation.test.js"
-  "test-contactservice": "jest ./tests/contactService.test.js" 
+  "test-validation": "jest ./tests/validation.test.js",
+  "test-contactservice": "jest ./tests/contactService.test.js",
+  "test-fileutils": "jest ./tests/fileUtils.test.js"
   },
   "keywords": [],
   "author": "",
