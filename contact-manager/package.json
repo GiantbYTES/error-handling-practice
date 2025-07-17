@@ -6,13 +6,14 @@
   "scripts": {
     "test": "jest",
     "test-contactservice": "jest ./tests/contactService.test.js",
-    "test-contact": "jest ./tests/contact.test.js"
+    "test-validation": "jest ./tests/validation.test.js",
+    "test-contact": "jest ./tests/contact.test.js",
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "jest": "^30.0.4"
+  "jest": "^30.0.4"
   }
 }
