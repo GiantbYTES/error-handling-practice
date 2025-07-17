@@ -62,11 +62,3 @@ class ContactsDB {
 }
 
 module.exports = ContactsDB;
-
-// const contDB = new ContactsDB();
-// contDB.addContact("Dave", "asdfasd@asdf", "123");
-// console.log(contDB.getContactByName("Dave"));
-// contDB.addContact("Sarah", "12f@asdf", "456");
-// console.log(contDB.getContactByEmail("12f@asdf").getContact());
-// console.log(contDB.deleteContact("asdfasd@asdf"));
-// console.log(contDB.getContactByName("Dave"));

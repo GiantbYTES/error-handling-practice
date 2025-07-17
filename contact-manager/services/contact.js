@@ -24,10 +24,3 @@ class Contact {
 }
 
 module.exports = Contact;
-// const dave = new Contact("Dave", "asyncWrapProviders", 123);
-// console.log(dave);
-// console.log(dave.getContact());
-// console.log(dave.getName());
-// console.log(dave.getEmail());
-// console.log(dave.getPhone());
-// console.log(dave.strToPrint());
