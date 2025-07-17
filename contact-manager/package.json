@@ -4,9 +4,10 @@
   "description": "",
   "main": "contacts.js",
   "scripts": {
-  "test": "jest",
-  "test-validation": "jest ./tests/validation.test.js"
-  "test-contactservice": "jest ./tests/contactService.test.js" 
+    "test": "jest",
+    "test-contactservice": "jest ./tests/contactService.test.js",
+    "test-validation": "jest ./tests/validation.test.js",
+    "test-contact": "jest ./tests/contact.test.js",
   },
   "keywords": [],
   "author": "",
